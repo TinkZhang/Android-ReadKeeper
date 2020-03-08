@@ -11,15 +11,16 @@
         style="@style/MaterialSearchBarLight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#FFFFFF"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:mt_hint="Search Book Title"
+        app:mt_hint="Search from GoodRead"
         app:mt_maxSuggestionsCount="10"
-        app:mt_placeholder="Search Book Title"
-        app:mt_searchBarColor="@color/secondaryColor"
-        app:mt_speechMode="true" />
+        app:mt_menuDividerEnabled="true"
+        app:mt_placeholder="Search Book"
+        app:mt_roundedSearchBarEnabled="true"
+        app:mt_searchBarColor="@color/secondaryColor" />
 </androidx.constraintlayout.widget.ConstraintLayout>
