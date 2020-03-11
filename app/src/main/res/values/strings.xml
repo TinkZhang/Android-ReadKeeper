@@ -3,4 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="publish_in">Publish in %d</string>
+    <string name="author_by">By %s</string>
+    <string name="rating">Rating %f from %d reviews</string>
 </resources>
