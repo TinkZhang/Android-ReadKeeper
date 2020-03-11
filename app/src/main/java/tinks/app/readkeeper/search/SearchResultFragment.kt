@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.search_result_fragment.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_search_result.*
 import tinks.app.readkeeper.R
 
 class SearchResultFragment : Fragment() {
@@ -18,7 +19,7 @@ class SearchResultFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.search_result_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_search_result, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -31,11 +32,16 @@ class SearchResultFragment : Fragment() {
 
         keyword?.let {
             SearchRepo().searchByKeyword(it) { searchResult, searchBooks ->
-                val text: CharSequence =
-                    searchResult.totolResults.toString() + searchBooks.map { "\n" + it.title }
-                searchResultTextView.text = text
+                search_result_recyclerview.apply {
+                    this.adapter = SearchResultRecycleViewAdapter(searchBooks)
+                    this.layoutManager = LinearLayoutManager(context)
+                }
+                progressBar.visibility = View.GONE
+
             }
         }
+
+
     }
 
 }

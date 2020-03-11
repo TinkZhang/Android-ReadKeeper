@@ -30,7 +30,7 @@
         android:id="@+id/searchResultFragment"
         android:name="tinks.app.readkeeper.search.SearchResultFragment"
         android:label="search_result_fragment"
-        tools:layout="@layout/search_result_fragment">
+        tools:layout="@layout/fragment_search_result">
         <argument
             android:name="searchKeyword"
             app:argType="string" />
