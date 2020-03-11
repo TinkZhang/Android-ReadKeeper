@@ -30,8 +30,9 @@ class SearchResultFragment : Fragment() {
         keyword = arguments?.getString("searchKeyword")
 
         keyword?.let {
-            SearchRepo().searchByKeyword(it) { response ->
-                val text: CharSequence = response
+            SearchRepo().searchByKeyword(it) { searchResult, searchBooks ->
+                val text: CharSequence =
+                    searchResult.totolResults.toString() + searchBooks.map { "\n" + it.title }
                 searchResultTextView.text = text
             }
         }

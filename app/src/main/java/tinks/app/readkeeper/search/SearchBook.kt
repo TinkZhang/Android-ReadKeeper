@@ -1,4 +1,10 @@
 package tinks.app.readkeeper.search
 
-class SearchBook(var title: String) {
-}
+data class SearchBook(
+    var title: String = "",
+    var author: String = "",
+    var imageUrl: String = "",
+    var ratingsCount: Int = 0,
+    var originalPublicationYear: Int = 1900,
+    var averageRating: Double = 0.0
+)
