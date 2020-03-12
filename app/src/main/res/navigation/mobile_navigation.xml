@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="tinks.app.readkeeper.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +26,13 @@
         android:name="tinks.app.readkeeper.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="tinks.app.readkeeper.search.SearchResultFragment"
+        android:label="search_result_fragment"
+        tools:layout="@layout/fragment_search_result">
+        <argument
+            android:name="searchKeyword"
+            app:argType="string" />
+    </fragment>
 </navigation>
