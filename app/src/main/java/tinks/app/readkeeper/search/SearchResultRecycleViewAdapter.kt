@@ -30,8 +30,16 @@ class SearchResultRecycleViewAdapter(var searchBooks: List<SearchBook>) :
         val book = searchBooks[position]
         holder.titleTextView?.text = book.title
         holder.authorTextView?.text = context?.getString(R.string.author_by, book.author)
-        holder.publishTextView?.text =
-            context?.getString(R.string.publish_in, book.originalPublicationYear)
+        when (book.originalPublicationYear) {
+            0 -> holder.publishTextView?.visibility = View.GONE
+            else -> {
+                holder.publishTextView?.text = context?.getString(
+                    R.string.publish_in,
+                    book.originalPublicationYear
+                )
+                holder.publishTextView?.visibility = View.VISIBLE
+            }
+        }
         holder.ratingTextView?.text =
             context?.getString(R.string.rating, book.averageRating, book.ratingsCount)
         context?.let {

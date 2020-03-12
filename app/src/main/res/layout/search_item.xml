@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:background="#E1F5FE">
 
     <TextView
         android:id="@+id/title_textview"
@@ -11,8 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:maxLines="2"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Book Title" />
@@ -51,9 +55,10 @@
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="#E1F5FE"
         android:clipToPadding="true"
-        app:cardBackgroundColor="#F44336"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
         app:cardMaxElevation="8dp"

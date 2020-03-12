@@ -57,6 +57,7 @@ class HomeFragment : Fragment(), MaterialSearchBar.OnSearchActionListener,
 
     override fun onSearchConfirmed(text: CharSequence?) {
         Toast.makeText(context, "Searching " + text.toString(), Toast.LENGTH_LONG).show()
+        searchBar.closeSearch()
         var bundle = bundleOf("searchKeyword" to text.toString())
         findNavController().navigate(R.id.action_navigation_home_to_searchResultFragment, bundle)
     }
