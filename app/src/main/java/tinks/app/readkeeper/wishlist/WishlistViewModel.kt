@@ -10,4 +10,10 @@ class WishlistViewModel : ViewModel() {
         value = "This is Wishlist Fragment"
     }
     val text: LiveData<String> = _text
+
+    var allBooks = WishRepo.getAllWish()
+
+    fun addBook() {
+        WishRepo.addWishBook()
+    }
 }
