@@ -28,7 +28,9 @@ class WishlistFragment : Fragment(), HasProgressBar by BasicProgressBar() {
 //        wishlistViewModel.text.observe(viewLifecycleOwner, Observer {
 //            textView.text = it
 //        })
+
         model.addBook()
+
         model.allBooks.observe(viewLifecycleOwner, Observer {
             adapter.updateBook(it)
             adapter.notifyDataSetChanged()

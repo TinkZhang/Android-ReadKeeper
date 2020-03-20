@@ -12,10 +12,10 @@ import tinks.app.readkeeper.AppConfig
 import tinks.app.readkeeper.R
 
 class WishlistRecyclerViewAdapter() : RecyclerView.Adapter<ViewHolder>() {
-    private var books: List<WishBook> = emptyList()
+    private var books: List<WishBookEntity> = emptyList()
     var context: Context? = null
 
-    fun updateBook(books: List<WishBook>) {
+    fun updateBook(books: List<WishBookEntity>) {
         this.books = books
     }
 
