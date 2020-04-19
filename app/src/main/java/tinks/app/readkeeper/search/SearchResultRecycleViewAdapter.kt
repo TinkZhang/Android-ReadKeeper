@@ -41,7 +41,7 @@ class SearchResultRecycleViewAdapter(var searchBooks: List<SearchBook>) :
             }
         }
         holder.ratingTextView?.text =
-            context?.getString(R.string.rating, book.averageRating, book.ratingsCount)
+            context?.getString(R.string.rating, book.rating, book.ratingsCount)
         context?.let {
             holder.bookCoverImageView?.let { imageView ->
                 if (book.imageUrl != AppConfig.DEFAULT_GOODREADER_IMAGE) {

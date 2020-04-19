@@ -17,7 +17,7 @@ class WishlistViewModel : ViewModel() {
 
     fun addBook() {
         viewModelScope.launch {
-            WishRepo.addWishBook(WishBookEntity(title = "Boo1"))
+            WishRepo.addWishBook(WishBookEntity(title = "Gang"))
         }
     }
 }

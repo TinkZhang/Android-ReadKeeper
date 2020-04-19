@@ -3,6 +3,7 @@ package tinks.app.readkeeper.wishlist
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import tinks.app.readkeeper.common.BasicBook
+import tinks.app.readkeeper.search.SearchBook
 import java.util.*
 
 @Database(entities = arrayOf(WishBookEntity::class), version = 1)
@@ -26,8 +27,22 @@ interface WishDao {
 
 }
 
-@Entity(ignoredColumns = ["imageUrl"])
+@Entity
 data class WishBookEntity(
     @PrimaryKey val uid: String = UUID.randomUUID().toString(),
-    @ColumnInfo(name = "title") override var title: String
-) : BasicBook()
+    override var title: String = "",
+    override var imageUrl: String = "",
+    override var author: String = "",
+    override var pages: Int = 0,
+    override var addedTime: Long = 0,
+    override var rating: Double = 0.0
+) : BasicBook() {
+    constructor(searchBook: SearchBook) : this(
+        title = searchBook.title,
+        imageUrl = searchBook.imageUrl,
+        author = searchBook.author,
+        pages = searchBook.pages,
+        addedTime = 0,
+        rating = searchBook.rating
+    )
+}

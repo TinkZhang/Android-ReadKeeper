@@ -35,7 +35,7 @@ class SearchRepo {
                                 imageUrl = result.book.imageUrl,
                                 originalPublicationYear = result.originalPublicationYear,
                                 ratingsCount = result.ratingsCount,
-                                averageRating = result.averageRating.toDouble(),
+                                rating = result.averageRating.toDouble(),
                                 author = result.book.author.name
                             )
                         )
