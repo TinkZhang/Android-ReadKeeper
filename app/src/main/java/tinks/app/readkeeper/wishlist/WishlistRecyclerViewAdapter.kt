@@ -1,4 +1,4 @@
-package tinks.app.readkeeper.search
+package tinks.app.readkeeper.wishlist
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,41 +10,43 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import tinks.app.readkeeper.AppConfig
 import tinks.app.readkeeper.R
+import tinks.app.readkeeper.common.Utils
 
-class SearchResultRecycleViewAdapter(var searchBooks: List<SearchBook>) :
-    RecyclerView.Adapter<ViewHolder>() {
-
+class WishlistRecyclerViewAdapter : RecyclerView.Adapter<ViewHolder>() {
+    private var books: List<WishBookEntity> = emptyList()
     var context: Context? = null
 
+    fun updateBook(books: List<WishBookEntity>) {
+        this.books = books
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.search_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.wishlist_item, parent, false)
         context = parent.context
         return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return searchBooks.size
+        return books.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val book = searchBooks[position]
+        val book = books[position]
         holder.titleTextView?.text = book.title
         holder.authorTextView?.text = context?.getString(R.string.author_by, book.author)
-        when (book.originalPublicationYear) {
-            0 -> holder.publishTextView?.visibility = View.GONE
-            else -> {
-                holder.publishTextView?.text = context?.getString(
-                    R.string.publish_in,
-                    book.originalPublicationYear
-                )
-                holder.publishTextView?.visibility = View.VISIBLE
-            }
+        holder.ratingTextView?.text = book.rating.toString()
+        holder.addedTimeTextView?.text = Utils.getDateStringFrom(book.addedTime)
+        if (book.pages == 0) {
+            holder.pagesTextView?.visibility = View.GONE
+        } else {
+            holder.pagesTextView?.visibility = View.VISIBLE
+            holder.pagesTextView?.text = book.pages.toString()
         }
-        holder.ratingTextView?.text =
-            context?.getString(R.string.rating, book.rating, book.ratingsCount)
+
         context?.let {
             holder.bookCoverImageView?.let { imageView ->
-                if (book.imageUrl != AppConfig.DEFAULT_GOODREADER_IMAGE) {
+                if (book.imageUrl.isNotEmpty() && book.imageUrl != AppConfig.DEFAULT_GOODREADER_IMAGE) {
                     Glide.with(it)
                         .load(book.imageUrl)
                         .placeholder(R.drawable.ic_book_default_cover)
@@ -57,13 +59,14 @@ class SearchResultRecycleViewAdapter(var searchBooks: List<SearchBook>) :
             }
         }
     }
-
 }
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var titleTextView: TextView? = itemView.findViewById(R.id.title_textview)
     var authorTextView: TextView? = itemView.findViewById(R.id.author_textview)
-    var publishTextView: TextView? = itemView.findViewById(R.id.publish_time_textview)
-    var ratingTextView: TextView? = itemView.findViewById(R.id.rating_textview)
     var bookCoverImageView: ImageView? = itemView.findViewById(R.id.book_cover_imageview)
+    var pagesTextView: TextView? = itemView.findViewById(R.id.pages_textview)
+    var addedTimeTextView: TextView? = itemView.findViewById(R.id.added_date_textview)
+    var ratingTextView: TextView? = itemView.findViewById(R.id.rating_textview)
 }
+

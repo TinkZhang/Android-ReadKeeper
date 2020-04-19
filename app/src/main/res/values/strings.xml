@@ -6,4 +6,6 @@
     <string name="publish_in">Publish in %d</string>
     <string name="author_by">By %s</string>
     <string name="rating">Rating %1$.2f from %2$d reviews</string>
+    <string name="title_wishlist">Wish</string>
+    <string name="book_image_description">Book Cover Image</string>
 </resources>
