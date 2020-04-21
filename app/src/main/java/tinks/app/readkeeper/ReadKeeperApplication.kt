@@ -2,6 +2,7 @@ package tinks.app.readkeeper
 
 import android.app.Application
 import android.content.res.Resources
+import android.graphics.drawable.Drawable
 
 class ReadKeeperApplication : Application() {
     companion object {
@@ -14,4 +15,6 @@ class ReadKeeperApplication : Application() {
         instance = this
         resourses = resources
     }
+
+
 }
