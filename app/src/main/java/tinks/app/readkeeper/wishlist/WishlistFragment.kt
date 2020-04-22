@@ -29,7 +29,7 @@ class WishlistFragment : Fragment(), HasProgressBar by BasicProgressBar() {
 //            textView.text = it
 //        })
 
-        model.addBook()
+//        model.addBook()
 
         model.allBooks.observe(viewLifecycleOwner, Observer {
             adapter.updateBook(it)
